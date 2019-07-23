@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.net.URI;
 import java.util.Optional;
 
@@ -85,7 +86,7 @@ public class ToDoController {
         return ResponseEntity.noContent().build();
     }
 
-    @ExceptionHandler
+    @ExceptionHandler()
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ToDoValidationError handleException(Exception exception) {
         return new ToDoValidationError(exception.getMessage());
